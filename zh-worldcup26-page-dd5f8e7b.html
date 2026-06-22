@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界·赛场 | zh-worldcup26.com 介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f7fafb;
+            color: #11343c;
+            line-height: 1.6;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* 开场装饰 */
+        .opening {
+            margin: 2.2rem 0 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
+            border-left: 4px solid #2a9d8f;
+            padding-left: 1.2rem;
+            color: #1f5b55;
+        }
+        .opening em {
+            font-style: normal;
+            color: #0e7a6e;
+            font-weight: 500;
+        }
+
+        /* 主区块 故事承接 */
+        .story-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 8px 20px rgba(42, 157, 143, 0.08), 0 2px 6px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s;
+        }
+        .story-card p {
+            margin-bottom: 1.2rem;
+        }
+        .story-card p:last-child {
+            margin-bottom: 0;
+        }
+        .highlight-link {
+            color: #1d7a6e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #b7dfd9;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .highlight-link:hover {
+            color: #0b534a;
+            border-bottom-color: #0b534a;
+        }
+
+        /* 网格卡片 —— 特点列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0 1.8rem;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.4rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 30, 20, 0.04);
+            border: 1px solid #d6ede9;
+            transition: transform 0.15s, border-color 0.15s;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+        }
+        .feature-card:hover {
+            border-color: #2a9d8f;
+            transform: translateY(-2px);
+        }
+        .feature-icon {
+            flex-shrink: 0;
+            width: 2.6rem;
+            height: 2.6rem;
+            background: #e1f3f0;
+            border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #1d6e63;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .feature-content h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: #0e4640;
+            letter-spacing: 0.01em;
+        }
+        .feature-content p {
+            font-size: 0.95rem;
+            color: #2a4d48;
+            margin: 0;
+        }
+
+        /* 温和结尾 + 分隔线 */
+        .closing {
+            margin: 2.5rem 0 2rem;
+            padding-top: 1.2rem;
+            border-top: 2px dashed #c0dfd9;
+            text-align: center;
+        }
+        .closing p {
+            font-size: 0.98rem;
+            color: #1e5c55;
+            max-width: 600px;
+            margin: 0 auto 0.6rem;
+        }
+        .closing .small-note {
+            font-size: 0.85rem;
+            color: #56837b;
+        }
+
+        /* FAQ 摘要 简洁 */
+        .faq-summary {
+            background: #edf6f4;
+            border-radius: 28px;
+            padding: 1.3rem 1.6rem;
+            margin: 1.8rem 0 1.2rem;
+        }
+        .faq-summary dt {
+            font-weight: 550;
+            color: #10443e;
+            margin-top: 0.6rem;
+            margin-bottom: 0.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .faq-summary dt:first-of-type {
+            margin-top: 0;
+        }
+        .faq-summary dd {
+            margin-left: 0.8rem;
+            font-size: 0.93rem;
+            color: #28615a;
+            border-left: 2px solid #b1d6d0;
+            padding-left: 0.9rem;
+        }
+        .faq-summary .q-badge {
+            display: inline-block;
+            background: #2a9d8f;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.65rem;
+            border-radius: 40px;
+            letter-spacing: 0.03em;
+        }
+
+        /* 移动端优化 */
+        @media (min-width: 640px) {
+            body { padding: 2.5rem; }
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .story-card {
+                padding: 2.5rem 2.8rem;
+            }
+            .opening {
+                font-size: 1.2rem;
+            }
+        }
+        @media (min-width: 800px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        /* 辅助 */
+        .mt-1 { margin-top: 0.6rem; }
+        .text-muted { color: #3d6e67; }
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #b6d9d3, transparent);
+            margin: 0.5rem 0 1.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="opening">
+        <em>每四年一次绿茵共振</em> —— 这里是一扇通向赛事信息与背景的安静窗口。
+    </div>
+
+    <!-- 承接段落：站点介绍 + 可信说明 -->
+    <div class="story-card">
+        <p>
+            <strong>zh-worldcup26.com</strong> 围绕世界杯相关内容进行组织与呈现，尝试以清晰的方式梳理赛程、参赛队伍与主办城市的基本信息。站点不隶属于任何官方机构，仅作为信息集合与导览页面存在，所有公开数据均参考自可靠来源并定期复核。
+        </p>
+        <p>
+            在赛事周期内，页面会跟随官方动态做适度更新。如果你希望快速了解下一届<a href="https://zh-worldcup26.com" class="highlight-link">世界杯</a>的大致轮廓、场地分布或历史背景，这里或许能提供一个较为紧凑的起点。内容追求平实，不渲染情绪，不预设结论。
+        </p>
+    </div>
+
+    <!-- 特点列表：网格卡片 -->
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🏟️</div>
+            <div class="feature-content">
+                <h3>赛程概览</h3>
+                <p>小组赛到决赛阶段的关键日期与场地，以表格与时间线两种方式并列，方便对照。</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🌍</div>
+            <div class="feature-content">
+                <h3>参赛名单</h3>
+                <p>已晋级及待定席位分布，按大洲与积分榜整理，不含预测或推测内容。</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📋</div>
+            <div class="feature-content">
+                <h3>简史与记录</h3>
+                <p>历届冠军、最佳射手与经典对阵的简明列表，不做深度评述，保留原始纪录。</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📌</div>
+            <div class="feature-content">
+                <h3>主办城市</h3>
+                <p>场馆容量、交通接驳与周边信息，以官方公开数据为基准，持续校核。</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <div class="feature-content">
+                <h3>引用说明</h3>
+                <p>页面底部列出来源链接与更新日期，便于回查，也欢迎通过邮件反馈错漏。</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧭</div>
+            <div class="feature-content">
+                <h3>无广告干扰</h3>
+                <p>当前版本不含商业推广与跟踪脚本，保留干净的阅读环境。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 简短 -->
+    <div class="faq-summary">
+        <dl>
+            <dt><span class="q-badge">问</span> 网站数据多久更新一次？</dt>
+            <dd>通常每两到四周同步一次官方渠道变动，重大节点（抽签、赛程发布）会酌情缩短间隔。</dd>
+            <dt><span class="q-badge">问</span> 是否有互动论坛或评论功能？</dt>
+            <dd>当前版本不设用户注册及留言区，仅作为静态信息页呈现。</dd>
+            <dt><span class="q-badge">问</span> 可以转载页面内容吗？</dt>
+            <dd>基本数据属于公共信息，但整体编排与文字描述如需引用，建议标注来源链接。</dd>
+        </dl>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        <p>足球世界的叙事不止于比分与奖杯，也在于每一次审慎的信息传递。希望你在这里找到所需。</p>
+        <p class="small-note">—— 页面保持安静，内容保持真实。</p>
+        <p class="small-note" style="margin-top: 0.6rem; opacity: 0.65;">zh-worldcup26.com · 索引 · 非官方</p>
+    </div>
+
+</div>
+</body>
+</html>
